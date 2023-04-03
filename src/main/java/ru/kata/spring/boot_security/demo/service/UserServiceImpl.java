@@ -23,17 +23,29 @@ public class UserServiceImpl implements UserService {
         this.roleRepository = roleRepository;
     }
 
+    @Override
+    @Transactional
     public void saveUser(User user) {
 
-        if (userRepository.findByUsername(user.getUsername()).isPresent()) {
+        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
             return;
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.getRoles().add(roleRepository.findByName("ROLE_USER"));
         userRepository.save(user);
-
     }
 
+    @Override
+    @Transactional
+    public void saveUserForRestApi(User user) {
+        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
+            return;
+        }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
+    }
+
+    @Override
     public User getUserById(int id) {
         return userRepository.findById(id).get();
     }
@@ -47,13 +59,11 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void delete(int id) {
         userRepository.deleteById(id);
-        ;
     }
 
     @Override
     @Transactional
     public void update(User user, int id) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 

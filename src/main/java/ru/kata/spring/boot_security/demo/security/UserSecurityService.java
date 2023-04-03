@@ -1,5 +1,6 @@
 package ru.kata.spring.boot_security.demo.security;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -35,6 +36,7 @@ public class UserSecurityService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(user.get().getUsername(),
                 user.get().getPassword(), mapRolesToAuthority(user.get().getRoles()));
     }
+
     private Collection<? extends GrantedAuthority> mapRolesToAuthority (Collection<Role> roles) {
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }

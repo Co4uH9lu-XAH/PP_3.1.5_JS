@@ -1,5 +1,6 @@
 package ru.kata.spring.boot_security.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
@@ -32,7 +33,7 @@ public class User implements UserDetails {
     @Column(name = "email")
     private String email;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST},
+    @ManyToMany(cascade = {CascadeType.MERGE},
             fetch = FetchType.LAZY)
     @JoinTable (name = "user_role", joinColumns = @JoinColumn( name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -100,6 +101,7 @@ public class User implements UserDetails {
     }
 
     @Override
+    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
          return getRoles();
     }

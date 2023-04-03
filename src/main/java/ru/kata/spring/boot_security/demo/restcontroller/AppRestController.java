@@ -32,7 +32,7 @@ public class AppRestController {
 
     @PostMapping("users")
     public User saveUser(@RequestBody User user) {
-        userService.saveUser(user);
+        userService.saveUserForRestApi(user);
         return user;
     }
 
