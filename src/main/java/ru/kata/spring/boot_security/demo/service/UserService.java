@@ -13,5 +13,5 @@ public interface UserService {
     void update(User user, int id);
 
     User findByUserName(String name);
-
+    User findByEmail(String email);
 }

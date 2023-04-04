@@ -33,7 +33,7 @@ public class UserSecurityService implements UserDetailsService {
         if (user.isEmpty()) {
             throw new UsernameNotFoundException(String.format("Похоже, '%s' не найден.", email));
         }
-        return new org.springframework.security.core.userdetails.User(user.get().getUsername(),
+        return new org.springframework.security.core.userdetails.User(user.get().getEmail(),
                 user.get().getPassword(), mapRolesToAuthority(user.get().getRoles()));
     }
 

@@ -38,7 +38,7 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String getAdminPage(Model model, Principal principal) {
-        User authenticatedUser = userService.findByUserName(principal.getName());
+        User authenticatedUser = userService.findByEmail(principal.getName());
         model.addAttribute("authenticatedUser", authenticatedUser);
         model.addAttribute("authenticatedUserRoles", authenticatedUser.getRoles());
         model.addAttribute("listUsers", userService.getAll());
