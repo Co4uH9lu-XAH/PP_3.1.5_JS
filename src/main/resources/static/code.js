@@ -1,4 +1,5 @@
 const urlUsers = 'http://localhost:8080/api/users'
+const urlUser = 'http://localhost:8080/api/user'
 const table = document.querySelector('tbody')
 
 
@@ -16,15 +17,10 @@ const showUsers = (users) => {
                 <td>${user.email}</td>
                 <td>${user.age}</td>
                 <td>${user.roles[0].name.replace("ROLE_", "")}</td>
-                <td><button class="btn btn-primary" data-bs-toogle="modal"
-                    data-bs-target="#editModal"
-                    onclick="editModalData(${user.id})">Edit</button></td>
-                <td><button class="btn btn-danger" data-bs-toogle="modal"
-                    data-bs-target="#deleteModal"
-                    onclick="deleteModalData(${user.id})">Delete</button></td>
-                
+                <td class = "text-center"><a class = "editBtn btn btn-primary">Edit</a></td>
+                <td class = "text-center"><a class = "deleteBtn btn btn-danger">Delete</a></td>
             </tr>
-            `
+        `
     });
     table.innerHTML = result
 }
@@ -33,4 +29,16 @@ fetch(urlUsers)
     .then(response => response.json())
     .then(data => showUsers(data))
     .catch(error => console.log(error))
+
+//Delete modal
+table.addEventListener("click", function(event) {
+    if (event.target.classList.contains("deleteBtn")) {
+        console.log("Кнопка Delete была нажата");
+    }
+});
+
+
+
+
+
 
