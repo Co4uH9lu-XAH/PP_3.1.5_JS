@@ -3,7 +3,6 @@ const urlUser = 'http://localhost:8080/api/user'
 const table = document.querySelector('tbody')
 
 
-
 // UsersTable
 
 const showUsers = (users) => {
