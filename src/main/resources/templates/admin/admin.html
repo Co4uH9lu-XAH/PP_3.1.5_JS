@@ -102,8 +102,8 @@
                                         <th> ID</th>
                                         <th> First name</th>
                                         <th> Last Name</th>
-                                        <th> Email</th>
-                                        <th> Age </th>
+                                        <th> Age</th>
+                                        <th> Email </th>
                                         <th> Role</th>
                                         <th> Edit</th>
                                         <th> Delete</th>
@@ -200,28 +200,48 @@
 
 
 <!--Edit User modal-->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
-     aria-labelledby="changeModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="Edit user" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="changeModalLabel">Edit user</h5>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit user</h1>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="idEditModal" class="col-form-label">Id:</label>
+                    <input type="text" class="form-control" id="idEditModal">
+                </div>
+
+                <div class="mb-3">
+                    <label for="usernameEditModal" class="col-form-label">Username:</label>
+                    <input type="text" class="form-control" id="usernameEditModal">
+                </div>
+
+                <div class="mb-3">
+                    <label for="surnameEditModal" class="col-form-label">Last name:</label>
+                    <input type="text" class="form-control" id="surnameEditModal">
+                </div>
+
+                <div class="mb-3">
+                    <label for="ageEditModal" class="col-form-label">Age:</label>
+                    <input type="number" class="form-control" id="ageEditModal">
+                </div>
+
+                <div class="mb-3">
+                    <label for="emailEditModal" class="col-form-label">Email:</label>
+                    <input type="text" class="form-control" id="emailEditModal">
+                </div>
+
+                <div class="mb-3">
+                    <label for="roleEditModal" class="col-form-label">Role:</label>
+                    <input type="text" class="form-control" id="roleEditModal">
+                </div>
 
             </div>
-            <form class="modal-body">
-                <div class="row">
-                    <div class="col-3"></div>
-                    <div id="editInsert" class="col-6">
-                    </div>
-                    <div class="col-3"></div>
-                </div>
-            </form>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                    Закрыть
-                </button>
-                <button id="changeConfirm" type="submit" class="btn btn-primary"
-                        onclick="changeUserAction()" data-dismiss="modal">Сохранить</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
