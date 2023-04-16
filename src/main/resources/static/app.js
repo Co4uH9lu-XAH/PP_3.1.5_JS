@@ -59,16 +59,15 @@ catchButtons(document, 'click', '.btnDelete', e => {
     const ageForm = dataString.children[3].innerHTML
     const emailForm = dataString.children[4].innerHTML
     const roleForm = dataString.children[5].innerHTML
-    console.log(idForm)
-    console.log(usernameForm)
-    console.log(surnameForm)
-    console.log(ageForm)
+    console.log(dataString)
     console.log(emailForm)
     console.log(roleForm)
-    console.log("YдОляй!!!")
+
+
+
 })
 
-// Обработчик событий кнопки редактировать
+// Открытие и заполнение формы редактирования
 catchButtons(document, 'click', '.btnEdit', e => {
     const dataString = e.target.parentNode.parentNode
 
@@ -79,11 +78,55 @@ catchButtons(document, 'click', '.btnEdit', e => {
     const ageForm = dataString.children[3].innerHTML
     const emailForm = dataString.children[4].innerHTML
     const roleForm = dataString.children[5].innerHTML
-    console.log(idForm)
-    console.log(usernameForm)
-    console.log(surnameForm)
-    console.log(ageForm)
-    console.log(emailForm)
-    console.log(roleForm)
-    console.log("Не удОляй!!!")
+
+    // Заполняем форму
+    var idEditModal = document.getElementById('idEditModal');
+    idEditModal.value = idForm;
+    var usernameEditModal = document.getElementById('usernameEditModal');
+    usernameEditModal.value = usernameForm;
+    var surnameEditModal = document.getElementById('surnameEditModal');
+    surnameEditModal.value = surnameForm;
+    var ageEditModal = document.getElementById('ageEditModal');
+    ageEditModal.value = ageForm;
+    var emailEditModal = document.getElementById('emailEditModal');
+    emailEditModal.value = emailForm;
+    //editModal.show()
 })
+
+//Обработчик события редактирования
+
+function editUser() {
+    editModalForm.addEventListener('submit', event => {
+        event.preventDefault()
+        let editedUserRoles = []
+        for (let i = 0; i < editModalForm.roles.options.length; i++) {
+            if (editModalForm.roles.options[i].selected) {
+                editedUserRoles.push({
+                    id: editModalForm.roles.options[i].value,
+                    authority: 'ROLE_' + editModalForm.roles.options[i].text
+                })
+            }
+        }
+
+        fetch('/api/users', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: editModalForm.id.value,
+                roles: editedUserRoles,
+                username: username.value,
+                surname: surname.value,
+                age: age.value,
+                email: email.value,
+                password: password.value
+            })
+        }).then (response => response.json())
+            .then(data => {
+                const newUsers = []
+                newUsers.push(data)
+            })
+
+        })
+    }

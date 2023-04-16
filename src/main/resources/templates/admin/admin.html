@@ -201,47 +201,90 @@
 
 <!--Edit User modal-->
 
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="Edit user" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal fade" tabindex="-1"
+     id="editModal"
+     aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
+
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit user</h1>
+                <h5 class="modal-title" id="editModalLabel">Edit user</h5>
+                <button type="button" class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="close"></button>
             </div>
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label for="idEditModal" class="col-form-label">Id:</label>
-                    <input type="text" class="form-control" id="idEditModal">
-                </div>
 
-                <div class="mb-3">
-                    <label for="usernameEditModal" class="col-form-label">Username:</label>
-                    <input type="text" class="form-control" id="usernameEditModal">
-                </div>
+            <div class="modal-body text-center d-flex justify-content-center">
+                <form id="editModalForm">
+                    <div class="form-group mb-2">
+                        <label for="idEditModal"
+                               class="form-label fw-bold">ID</label>
+                        <input type="text"
+                               name="id"
+                               class="form-control"
+                               id="idEditModal"
+                               readonly>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="usernameEditModal"
+                               class="form-label fw-bold">First
+                            name</label>
+                        <input type="text"
+                               name="firstName"
+                               class="form-control"
+                               id="usernameEditModal"/>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="surnameEditModal"
+                               class="form-label fw-bold">Last
+                            name</label>
+                        <input type="text"
+                               name="lastName"
+                               class="form-control "
+                               id="surnameEditModal"/>
+                    </div>
 
-                <div class="mb-3">
-                    <label for="surnameEditModal" class="col-form-label">Last name:</label>
-                    <input type="text" class="form-control" id="surnameEditModal">
-                </div>
+                    <div class="form-group mb-2">
+                        <label for="ageEditModal"
+                               class="form-label fw-bold">Age</label>
+                        <input type="number"
+                               name="age"
+                               class="form-control"
+                               id="ageEditModal"
+                               min="0" max="120"/>
+                    </div>
 
-                <div class="mb-3">
-                    <label for="ageEditModal" class="col-form-label">Age:</label>
-                    <input type="number" class="form-control" id="ageEditModal">
-                </div>
-
-                <div class="mb-3">
-                    <label for="emailEditModal" class="col-form-label">Email:</label>
-                    <input type="text" class="form-control" id="emailEditModal">
-                </div>
-
-                <div class="mb-3">
-                    <label for="roleEditModal" class="col-form-label">Role:</label>
-                    <input type="text" class="form-control" id="roleEditModal">
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
+                    <div class="form-group mb-2">
+                        <label for="emailEditModal"
+                               class="form-label fw-bold">Email</label>
+                        <input type="text"
+                               name="email"
+                               class="form-control"
+                               id="emailEditModal" required/>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="passwordEditModal"
+                               class="form-label fw-bold">Password</label>
+                        <input type="password"
+                               name="password"
+                               class="form-control"
+                               id="passwordEditModal"
+                               required/>
+                    </div>
+                    <label class="form-label fw-bold">Role</label>
+                    <select id="roleEditModal" class="form-select col-md-5"
+                            name="roles" multiple size="2" required>
+                        <option value="2">ADMIN</option>
+                        <option value="1">USER</option>
+                    </select>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="editModalCloseButton"
+                                data-bs-dismiss="modal">Close
+                        </button>
+                        <input class="btn btn-primary" type="submit"
+                               value="Edit"/>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
