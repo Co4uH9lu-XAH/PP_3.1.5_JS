@@ -1,6 +1,27 @@
 const urlUsers = 'http://localhost:8080/api/users'
 const insert = document.querySelector('#tableInsert')
+
+// Захват модального окна и кнопки buttonCreate
+const modalElement = new bootstrap.Modal(document.getElementById('modalElement'))
+let button = document.querySelector('#buttonCreate');
+
+// Захват формы модального окна редактирования, оно же создание нового юзера
+const form = document.getElementById('modalForm')
+
+// Захват
+const id = document.getElementById('id')
+const username = document.getElementById('username')
+const surname = document.getElementById('surname')
+const age = document.getElementById('age')
+const email = document.getElementById('email')
+const role = document.getElementById('role')
+let option = ''
 let result = ''
+
+
+button.addEventListener('click', function() {
+    modalElement.show();
+});
 
 
 
@@ -50,11 +71,5 @@ catchButtons(document, 'click', '.btnDelete', e => {
     const ageForm = dataString.children[3].innerHTML
     const emailForm = dataString.children[4].innerHTML
     const roleForm = dataString.children[5].innerHTML
-    console.log(dataString)
-    console.log(emailForm)
-    console.log(roleForm)
-
-
-
 })
 
