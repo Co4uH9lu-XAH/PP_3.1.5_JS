@@ -8,7 +8,9 @@ import ru.kata.spring.boot_security.demo.services.UserServiceImpl;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Component
 public class Initializer {
@@ -25,7 +27,7 @@ public class Initializer {
         if (user == null) {
             Role userRole = new Role("ROLE_USER");
             Role adminRole = new Role("ROLE_ADMIN");
-            List<Role> adminRoles = new ArrayList<>();
+            Set<Role> adminRoles = new HashSet<>();
             adminRoles.add(userRole);
             adminRoles.add(adminRole);
             User admin = new User(adminRoles, "admin", "admin", 24, "admin@mail.ru", "admin@mail.ru", "admin");

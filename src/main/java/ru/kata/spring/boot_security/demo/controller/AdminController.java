@@ -10,12 +10,12 @@ import ru.kata.spring.boot_security.demo.services.UserService;
 import java.security.Principal;
 
 @Controller
-public class MainController {
+public class AdminController {
 
     private final UserService userService;
 
     @Autowired
-    public MainController(UserService userService) {
+    public AdminController(UserService userService) {
         this.userService = userService;
     }
 
@@ -29,12 +29,7 @@ public class MainController {
         return "login";
     }
 
-    @GetMapping("/user")
-    public String user(Model model, Principal principal) {
-        User authentificatedUser = userService.getByeMail(principal.getName());
-        model.addAttribute("authenticatedUserRoles", authentificatedUser.getRoles());
-        return "user";
-    }
+
 
     @GetMapping("/admin")
     public String admin(Model model, Principal principal) {
